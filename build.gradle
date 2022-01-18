@@ -1,0 +1,86 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.springframework.boot' version '2.5.5'
+	id 'java'
+    id 'jacoco'
+}
+
+group = 'app'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+sourceSets {
+    e2eTest {
+        compileClasspath += main.output
+        runtimeClasspath += main.output
+    }
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    runtimeOnly 'org.postgresql:postgresql:42.2.24'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    e2eTestImplementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
+    e2eTestImplementation 'org.seleniumhq.selenium:selenium-java:4.1.1'
+    e2eTestImplementation 'org.springframework.boot:spring-boot-starter-test'
+    e2eTestImplementation 'org.testcontainers:testcontainers:1.16.0'
+    e2eTestImplementation 'org.testcontainers:junit-jupiter:1.16.0'
+	e2eTestImplementation 'org.testcontainers:postgresql:1.16.0'
+
+    e2eTestImplementation sourceSets.main.runtimeClasspath
+    e2eTestImplementation sourceSets.test.runtimeClasspath
+}
+
+jacoco {
+    toolVersion = '0.8.7'
+}
+
+jacocoTestReport {
+    dependsOn test
+    finalizedBy jacocoTestCoverageVerification
+    reports {
+        xml.required = true
+    }
+}
+
+jacocoTestCoverageVerification {
+    dependsOn test
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.8
+            }
+        }
+    }
+}
+
+test {
+    finalizedBy jacocoTestReport
+	useJUnitPlatform()
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}
+
+task e2e(type: Test) {
+    description = 'Runs the end-to-end tests.'
+    group = 'Verification'
+    testClassesDirs = sourceSets.e2eTest.output.classesDirs
+    classpath = sourceSets.e2eTest.runtimeClasspath
+
+    useJUnitPlatform()
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}
