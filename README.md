@@ -80,7 +80,7 @@ E2E tests determine if independently developed units of software work correctly 
 
 Use `./gradlew e2e` to execute the e2e tests via [JUnit 5](https://junit.org/junit5/), [Testcontainers](https://www.testcontainers.org/), [Selenium 4](https://www.selenium.dev/) and [AssertJ](https://assertj.github.io/doc/).
 Use `./gradlew e2e -t` to keep executing your tests while watching for file changes in the background.
-You can see the HTML report opening the [index.html](build/reports/tests/e2eTest/index.html) file in your web browser.
+You can see the HTML report opening the [index.html](build/reports/tests/e2e/index.html) file in your web browser.
 
 Like unit tests, you can also run subsets of a test suite.
 See the [Test filtering](https://docs.gradle.org/current/userguide/java_testing.html#test_filtering) section of the Gradle documentation.
