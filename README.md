@@ -1,7 +1,7 @@
-# Testing a Spring MVC application with Selenium
+# Testing a Spring MVC application with Selenium 4
 
 E2E testing plays an important role in the application development cycle by verifying the end-to-end behavior of a system.
-This project template uses [JUnit 5](https://junit.org/junit5/), [Testcontainers](https://www.testcontainers.org/) and [Selenium 4](https://www.selenium.dev/) to test a [Spring](https://spring.io/) MVC application with a [PostgreSQL](https://www.postgresql.org/) database.
+This project template uses [JUnit 5](https://junit.org/junit5/), [Testcontainers](https://www.testcontainers.org/) and [Selenium 4](https://www.selenium.dev/) to test a Spring MVC application with a [PostgreSQL](https://www.postgresql.org/) database.
 
 ## Overview
 
@@ -13,7 +13,7 @@ This project demonstrates how to test any Spring MVC application with `Selenium`
 - The **View** is responsible for rendering the model data and in general it generates HTML output that the client's browser can interpret.
 - The **Controller** is responsible for processing user requests and building an appropriate model and passes it to the view for rendering.
 
-Spring implements MVC with the front controller pattern using its DispatcherServlet.
+[Spring](https://spring.io/) implements MVC with the front controller pattern using its DispatcherServlet.
 [Thymeleaf](https://www.thymeleaf.org/) offers a set of Spring integrations that allow you to use it as a fully-featured substitute for JSP in Spring MVC applications.
 
 In local development, you need to provide a connection to a `PostgreSQL` instance.
