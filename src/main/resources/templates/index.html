@@ -17,6 +17,7 @@
                     <th>Price</th>
                     <th>Currency</th>
                     <th>Expiration Date</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +36,7 @@
                     </td>
                 </tr>
                 <tr th:if="${products.size() == 0}">
-                    <td colspan="7">No results found!</td>
+                    <td colspan="8">No results found!</td>
                 </tr>
             </tbody>
         </table>

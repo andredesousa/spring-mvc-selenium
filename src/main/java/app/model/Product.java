@@ -31,14 +31,14 @@ public class Product {
     private Double quantity;
 
     @NotBlank
-    @Size(min = 1, max = 1)
+    @Size(min = 1, max = 5)
     private String unit;
 
     @Positive
     private Double price;
 
     @NotBlank
-    @Size(min = 1, max = 1)
+    @Size(min = 1, max = 5)
     private String currency;
 
     @NotNull
